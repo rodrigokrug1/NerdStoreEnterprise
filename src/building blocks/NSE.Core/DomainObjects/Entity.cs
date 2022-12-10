@@ -18,8 +18,11 @@ namespace NSE.Core.DomainObjects
 
         public static bool operator ==(Entity a, Entity b)
         {
-            if (ReferenceEquals(a, null) && ReferenceEquals(b, null)) return true;
-            if (ReferenceEquals(a, null) || ReferenceEquals(b, null)) return false;
+            if (ReferenceEquals(a, null) && ReferenceEquals(b, null))
+                return true;
+
+            if (ReferenceEquals(a, null) || ReferenceEquals(b, null))
+                return false;
 
             return a.Equals(b);
         }
@@ -31,7 +34,7 @@ namespace NSE.Core.DomainObjects
 
         public override int GetHashCode()
         {
-            return (GetType().GetHashCode() * 907) * Id.GetHashCode();
+            return (GetType().GetHashCode() * 907) + Id.GetHashCode();
         }
 
         public override string ToString()

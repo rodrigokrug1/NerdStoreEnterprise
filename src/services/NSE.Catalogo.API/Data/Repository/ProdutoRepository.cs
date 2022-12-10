@@ -1,9 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using NSE.Catalogo.API.Models;
+﻿using NSE.Catalogo.API.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using NSE.Core.Data;
 
 namespace NSE.Catalogo.API.Data.Repository
@@ -17,7 +16,7 @@ namespace NSE.Catalogo.API.Data.Repository
             _context = context;
         }
 
-        public IUnityOfWork UnityOfWork => _context;
+        public IUnitOfWork UnitOfWork => _context;
 
         public async Task<IEnumerable<Produto>> ObterTodos()
         {

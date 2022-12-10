@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Mvc;
-using NSE.WebApp.MVC.Models;
-using NSE.WebApp.MVC.Services;
+﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
+using NSE.WebApp.MVC.Models;
+using NSE.WebApp.MVC.Services;
 
 namespace NSE.WebApp.MVC.Controllers
 {
@@ -38,7 +39,7 @@ namespace NSE.WebApp.MVC.Controllers
 
             await RealizarLogin(resposta);
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Catalogo");
         }
 
         [HttpGet]
@@ -54,7 +55,6 @@ namespace NSE.WebApp.MVC.Controllers
         public async Task<IActionResult> Login(UsuarioLogin usuarioLogin, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-
             if (!ModelState.IsValid) return View(usuarioLogin);
 
             var resposta = await _autenticacaoService.Login(usuarioLogin);
@@ -63,17 +63,17 @@ namespace NSE.WebApp.MVC.Controllers
 
             await RealizarLogin(resposta);
 
-            if (string.IsNullOrEmpty(returnUrl)) return RedirectToAction("Index", "Home");
+            if (string.IsNullOrEmpty(returnUrl)) return RedirectToAction("Index", "Catalogo");
 
             return LocalRedirect(returnUrl);
         }
 
         [HttpGet]
         [Route("sair")]
-        public async Task<IActionResult> LogoutAsync()
+        public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Catalogo");
         }
 
         private async Task RealizarLogin(UsuarioRespostaLogin resposta)
@@ -88,7 +88,7 @@ namespace NSE.WebApp.MVC.Controllers
 
             var authProperties = new AuthenticationProperties
             {
-                ExpiresUtc = System.DateTimeOffset.Now.AddMinutes(60),
+                ExpiresUtc = DateTimeOffset.UtcNow.AddMinutes(60),
                 IsPersistent = true
             };
 

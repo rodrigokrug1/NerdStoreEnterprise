@@ -1,15 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>f5c97a63-1c14-456a-bb41-bb4e3fb14228</UserSecretsId>
+    <UserSecretsId>89b8bcc1-8571-40e2-a4e6-f8b761b60a58</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
@@ -23,7 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\building blocks\NSE.Core\NSE.Core.csproj" />
-    <ProjectReference Include="..\..\building blocks\NSE.WebApi.Core\NSE.WebApi.Core.csproj" />
+    <ProjectReference Include="..\..\building blocks\NSE.WebAPI.Core\NSE.WebAPI.Core.csproj" />
   </ItemGroup>
 
 

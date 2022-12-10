@@ -1,7 +1,5 @@
-﻿using NSE.WebApp.MVC.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using NSE.WebApp.MVC.Models;
 
 namespace NSE.WebApp.MVC.Services
 {

@@ -1,8 +1,8 @@
-﻿using NSE.WebApp.MVC.Extensions;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using NSE.WebApp.MVC.Extensions;
 
 namespace NSE.WebApp.MVC.Services
 {
@@ -37,11 +37,10 @@ namespace NSE.WebApp.MVC.Services
                     throw new CustomHttpRequestException(response.StatusCode);
 
                 case 400:
-                    return false;            
+                    return false;
             }
 
             response.EnsureSuccessStatusCode();
-
             return true;
         }
     }

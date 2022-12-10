@@ -1,11 +1,9 @@
-﻿using NSE.WebApp.MVC.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
+using NSE.WebApp.MVC.Extensions;
 
 namespace NSE.WebApp.MVC.Services.Handlers
 {
@@ -20,11 +18,11 @@ namespace NSE.WebApp.MVC.Services.Handlers
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            var authorizationHandler = _user.ObterHttpContext().Request.Headers["Authorization"];
+            var authorizationHeader = _user.ObterHttpContext().Request.Headers["Authorization"];
 
-            if (!string.IsNullOrEmpty(authorizationHandler))
+            if (!string.IsNullOrEmpty(authorizationHeader))
             {
-                request.Headers.Add("Authorization", new List<string>() { authorizationHandler });
+                request.Headers.Add("Authorization", new List<string>() { authorizationHeader });
             }
 
             var token = _user.ObterUserToken();

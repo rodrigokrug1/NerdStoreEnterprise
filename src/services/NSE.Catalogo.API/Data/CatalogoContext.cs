@@ -1,21 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using NSE.Catalogo.API.Models;
 using NSE.Core.Data;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace NSE.Catalogo.API.Data
 {
-    public class CatalogoContext : DbContext, IUnityOfWork
+    public class CatalogoContext : DbContext, IUnitOfWork
     {
-        public CatalogoContext(DbContextOptions<CatalogoContext> options) : base(options) { }
+        public CatalogoContext(DbContextOptions<CatalogoContext> options)
+            : base(options) { }
 
         public DbSet<Produto> Produtos { get; set; }
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             foreach (var property in modelBuilder.Model.GetEntityTypes().SelectMany(
-                e => e.GetProperties().Where(x => x.ClrType == typeof(string))))
+                e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
                 property.SetColumnType("varchar(100)");
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogoContext).Assembly);

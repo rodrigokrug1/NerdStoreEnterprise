@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using NSE.WebApp.MVC.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using NSE.WebApp.MVC.Services;
 
 namespace NSE.WebApp.MVC.Controllers
 {
@@ -30,9 +28,9 @@ namespace NSE.WebApp.MVC.Controllers
         [Route("produto-detalhe/{id}")]
         public async Task<IActionResult> ProdutoDetalhe(Guid id)
         {
-            var produtos = await _catalogoService.ObterPorId(id);
+            var produto = await _catalogoService.ObterPorId(id);
 
-            return View(produtos);
+            return View(produto);
         }
     }
 }

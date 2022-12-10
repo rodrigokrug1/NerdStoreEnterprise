@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using NSE.Identidade.API.Models;
-using NSE.WebApi.Core.Identidade;
+using NSE.WebAPI.Core.Identidade;
 
 namespace NSE.Identidade.API.Controllers
 {
@@ -21,7 +21,7 @@ namespace NSE.Identidade.API.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly AppSettings _appSettings;
 
-        public AuthController(SignInManager<IdentityUser> signInManager,
+        public AuthController(SignInManager<IdentityUser> signInManager, 
                               UserManager<IdentityUser> userManager,
                               IOptions<AppSettings> appSettings)
         {

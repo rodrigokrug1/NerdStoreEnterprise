@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Net;
 
 namespace NSE.WebApp.MVC.Extensions
@@ -10,8 +9,8 @@ namespace NSE.WebApp.MVC.Extensions
 
         public CustomHttpRequestException() { }
 
-        public CustomHttpRequestException(string message, Exception innerException) 
-            : base (message, innerException) { }
+        public CustomHttpRequestException(string message, Exception innerException)
+            : base(message, innerException) { }
 
         public CustomHttpRequestException(HttpStatusCode statusCode)
         {

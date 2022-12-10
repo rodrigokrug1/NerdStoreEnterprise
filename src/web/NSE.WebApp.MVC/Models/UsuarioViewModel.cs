@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace NSE.WebApp.MVC.Models
@@ -13,7 +14,8 @@ namespace NSE.WebApp.MVC.Models
         [StringLength(100, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres", MinimumLength = 6)]
         public string Senha { get; set; }
 
-        [Compare("Senha", ErrorMessage = "As senhas não conferem")]
+        [DisplayName("Confirme sua senha")]
+        [Compare("Senha", ErrorMessage = "As senhas não conferem.")]
         public string SenhaConfirmacao { get; set; }
     }
 
@@ -31,7 +33,7 @@ namespace NSE.WebApp.MVC.Models
     public class UsuarioRespostaLogin
     {
         public string AccessToken { get; set; }
-        public int ExpiresIn { get; set; }
+        public double ExpiresIn { get; set; }
         public UsuarioToken UsuarioToken { get; set; }
         public ResponseResult ResponseResult { get; set; }
     }
@@ -40,7 +42,7 @@ namespace NSE.WebApp.MVC.Models
     {
         public string Id { get; set; }
         public string Email { get; set; }
-        public List<UsuarioClaim> Claims { get; set; }
+        public IEnumerable<UsuarioClaim> Claims { get; set; }
     }
 
     public class UsuarioClaim

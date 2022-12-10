@@ -9,10 +9,10 @@ namespace NSE.WebApp.MVC.Configuration
         public static void AddIdentityConfiguration(this IServiceCollection services)
         {
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options => 
+                .AddCookie(options =>
                 {
                     options.LoginPath = "/login";
-                    options.AccessDeniedPath = "/acesso-negado";                    
+                    options.AccessDeniedPath = "/erro/403";
                 });
         }
 
